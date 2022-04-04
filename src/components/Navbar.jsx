@@ -19,7 +19,7 @@ export default function () {
 	}
 
 	return (
-		<nav className="fixed top-0 left-0 w-full border-gray-200 px-2 sm:px-4 py-2.5 rounded h-24 flex">
+		<nav className="bg-[255,255,255,0.7] dark:bg-[rgba(21,28,35,0.7)] fixed top-0 left-0 w-full border-gray-200 px-2 sm:px-4 py-2.5 rounded h-24 flex">
 			<div className="flex flex-wrap justify-end items-center w-full mx-10 self-center">
 				<div className="flex items-center md:order-2 gap-6">
 
@@ -37,19 +37,19 @@ export default function () {
 					<div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
 							<ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLang">
 								<li>
-									<a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Español</a>
+									<a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base">Español</a>
 								</li>
 								<li>
-									<a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
+									<a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base">English</a>
 								</li>
 							</ul>
 					</div>
 
 
 					{/* user dropdown */}
-					<button type="button" className="flex mr-10 bg-primary rounded-full md:mr-0 p-1" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="userDropdown">
+					<button type="button" className="hover:bg-gray-200 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400  rounded-full p-2 inline-flex items-center dark:hover:bg-[rgba(255,255,255,0.1)] transition" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="userDropdown">
 						<span className="sr-only">Open user menu</span>
-						<svg class="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+						<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 					</button>
 					{/* user dropdown menu */}
 					<div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="userDropdown">

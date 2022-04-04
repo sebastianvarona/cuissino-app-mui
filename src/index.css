@@ -12,7 +12,6 @@ body {
     @apply dark:bg-[#151c23];
     @apply text-gray-600 dark:text-gray-300;
 }
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
@@ -21,7 +20,19 @@ code {
 .cuisiino-text {
     font-family: "Ubuntu", sans-serif;
 }
-
 #userDropdown {
     left: -60px !important;
+}
+.sidebar-item.active {
+    @apply bg-gray-200 dark:bg-gray-800 text-primary font-bold;
+}
+
+.recharts-text {
+    @apply fill-gray-400 dark:fill-gray-600;
+}
+.recharts-cartesian-grid-horizontal line {
+    @apply stroke-gray-300 dark:stroke-gray-700;
+}
+.recharts-dot {
+    @apply dark:fill-transparent;
 }
