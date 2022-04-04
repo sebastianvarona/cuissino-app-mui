@@ -54,8 +54,8 @@ export default function Home() {
 				<CardOne title="Sales" icon="trending-up" data="837" />
 				<CardOne title="Cost" icon="trending-down" data="$350,238" />
 			</div>
-			<div className="flex gap-6">
-				<div className="w-full max-w-[calc(100%-200px)]">
+			<div className="flex gap-6 flex-wrap">
+				<div className="w-full max-w-[calc(100%-224px)]">
 					<CardChart title="Summary">
 						<LineChartC data={revenueData} />
 					</CardChart>
