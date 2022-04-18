@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Analytics from './pages/Analytics';
 import Menus from './pages/Menus';
 import Products from './pages/Products';
 import Inventory from './pages/Inventory';
@@ -15,6 +14,7 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/menus" element={<Menus />} />
         <Route path="/products" element={<Products />} />
