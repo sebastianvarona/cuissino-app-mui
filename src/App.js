@@ -1,15 +1,15 @@
 import React from 'react';
 import Layout from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home';
-import Orders from './pages/orders';
-import Analytics from './pages/analytics';
-import Menus from './pages/menus';
-import Products from './pages/products';
-import Inventory from './pages/inventory';
-import Expenses from './pages/expenses';
-import Staff from './pages/staff';
-import Settings from './pages/settings';
+import Home from './pages/Home';
+import Orders from './pages/Orders';
+import Analytics from './pages/Analytics';
+import Menus from './pages/Menus';
+import Products from './pages/Products';
+import Inventory from './pages/Inventory';
+import Expenses from './pages/Expenses';
+import Staff from './pages/Staff';
+import Settings from './pages/Settings';
 
 export default function App() {
   return (
