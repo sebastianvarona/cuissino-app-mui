@@ -1,72 +1,70 @@
 import React from 'react';
-import CardOne from '../components/CardOne';
-import CardChart from '../components/CardChart'
-import CardAction from '../components/CardAction';
-import LineChartC from '../components/charts/LineChartC';
-import PieChartC from '../components/charts/PieChartC';
-import RadarChartC from '../components/charts/RadarChartC';
+import { SearchIcon } from '@heroicons/react/outline';
+import DatePOne from '../components/DatePOne';
 
 export default function Home() {
+  const revenueData = [
+    {
+      name: 'Page A',
+      costs: 4000,
+      profit: 2400,
+    },
+    {
+      name: 'Page B',
+      costs: 3000,
+      profit: 1398,
+    },
+    {
+      name: 'Page C',
+      costs: 2000,
+      profit: 9800,
+    },
+    {
+      name: 'Page D',
+      costs: 2780,
+      profit: 3908,
+    },
+    {
+      name: 'Page E',
+      costs: 1890,
+      profit: 4800,
+    },
+    {
+      name: 'Page F',
+      costs: 2390,
+      profit: 3800,
+    },
+    {
+      name: 'Page G',
+      costs: 3490,
+      profit: 4300,
+    },
+  ];
 
-	const revenueData = [
-		{
-			name: 'Page A',
-			costs: 4000,
-			profit: 2400,
-		},
-		{
-			name: 'Page B',
-			costs: 3000,
-			profit: 1398,
-		},
-		{
-			name: 'Page C',
-			costs: 2000,
-			profit: 9800,
-		},
-		{
-			name: 'Page D',
-			costs: 2780,
-			profit: 3908,
-		},
-		{
-			name: 'Page E',
-			costs: 1890,
-			profit: 4800,
-		},
-		{
-			name: 'Page F',
-			costs: 2390,
-			profit: 3800,
-		},
-		{
-			name: 'Page G',
-			costs: 3490,
-			profit: 4300,
-		},
-	];
-
-
-	return (
-		<div className="flex flex-col gap-6">
-			<div className="flex gap-6 flex-wrap">
-				<CardOne title="Revenue" icon="dollar-sign" data="$10,837,327" />
-				<CardOne title="Sales" icon="trending-up" data="837" />
-				<CardOne title="Cost" icon="trending-down" data="$350,238" />
-			</div>
-			<div className="flex gap-6 flex-wrap">
-				<div className="w-full max-w-[calc(100%-224px)]">
-					<CardChart title="Summary">
-						<LineChartC data={revenueData} />
-					</CardChart>
-				</div>
-				<div className="flex-2 flex gap-6 flex-col min-w-[200px]">
-					<CardAction title="Add order" icon="plus" />
-					<CardAction title="Remove order" icon="minus" />
-					<CardAction title="Add cost" icon="trending-down" />
-					<CardAction title="Remove cost" icon="trending-up" />
-				</div>
-			</div>
-		</div>
-	)
+  return (
+    <>
+      <div className={`flex justify-between items-center`}>
+        <h1 className="text-4xl font-bold mb-8">Quick Options</h1>
+        <div className={`flex gap-4 items-center`}>
+          <DatePOne />
+          <button
+            className={`p-2 rounded-full bg-blue-400/25 hover:bg-blue-600/25 transition relative`}
+          >
+            <SearchIcon className="w-5 h-5 stroke-blue-500 hover:stroke-blue-600 transition" />
+          </button>
+        </div>
+      </div>
+      <div className={``}>
+        <div
+          className={`shadow-customL dark:shadow-customD rounded-2xl max-w-md`}
+        >
+          <button
+            className={`w-full flex justify-center items-center rounded-2xl py-32 font-semibold text-5xl bg-green-400/25 hover:bg-green-600/25 transition`}
+          >
+            Add Order
+          </button>
+        </div>
+      </div>
+    </>
+  );
 }

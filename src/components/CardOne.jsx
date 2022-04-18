@@ -17,11 +17,11 @@ export default function CardOne({title, icon, data}) {
 		<div className="flex-1 shadow-customL dark:shadow-customD rounded-2xl flex items-center p-6 overflow-hidden">
 			<div className="flex-1">
 				<h5 className="font-semibold text-3xl mb-6">{title}</h5>
-				<div className="flex gap-4">
+				<div className="flex gap-2">
 					<span className={`flex rounded-full p-2 items-center ${iconColor()}`}>
 						<DisplayIcon icon={icon} />
 					</span>
-					<h3 className="text-4xl font-semibold">{data}</h3>
+					<h3 className="text-4xl font-semibold tracking-tight">{data}</h3>
 				</div>
 			</div>
 
