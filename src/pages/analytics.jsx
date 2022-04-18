@@ -5,7 +5,7 @@ import AnalyticsOrdersChart from '../components/charts/AnalyticsOrdersChart';
 import LineChartC from '../components/charts/LineChartC';
 import RangeDropdown from '../components/RangeDropdown';
 
-export default function Home() {
+export default function Analytics() {
   // ORDERS DATA
   const ordersData = [
     {

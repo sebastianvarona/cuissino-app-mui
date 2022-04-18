@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
 import {
   PencilAltIcon,
   TrashIcon,
@@ -52,6 +51,7 @@ export default function Menus() {
               if (m.category === e) {
                 return m;
               }
+              return m;
             });
             mElements = menuElementsOrganizer(displayMenuData);
 

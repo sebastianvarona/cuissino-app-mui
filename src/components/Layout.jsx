@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 export default function Layout({ children }) {
-  const lang = 'es';
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [hoverSidebar, setHoverSidebar] = useState(false);
   return (

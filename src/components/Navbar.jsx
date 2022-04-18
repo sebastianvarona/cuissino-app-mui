@@ -1,13 +1,12 @@
+import React from 'react';
 import {
   MoonIcon,
   SunIcon,
   TranslateIcon,
   UserIcon,
 } from '@heroicons/react/outline';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-export default function () {
+export default function Navbar() {
   const Theme = () => {
     if (document.documentElement.classList.contains('dark')) {
       return <MoonIcon className={`w-6 h-6`} />;

@@ -1,10 +1,5 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import {
-  LockClosedIcon,
-  PencilAltIcon,
-  TrashIcon,
-} from '@heroicons/react/outline';
+import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 
 export default function Expenses() {
   let rIndex = 0;
@@ -122,6 +117,7 @@ export default function Expenses() {
         </tr>
       );
     }
+    return null;
   });
   const iregularExpensesElements = expensesData.map((e) => {
     if (!e.regular) {
@@ -165,6 +161,7 @@ export default function Expenses() {
         </tr>
       );
     }
+    return null;
   });
 
   return (

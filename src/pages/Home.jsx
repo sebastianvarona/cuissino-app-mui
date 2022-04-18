@@ -3,44 +3,6 @@ import { SearchIcon } from '@heroicons/react/outline';
 import DatePOne from '../components/DatePOne';
 
 export default function Home() {
-  const revenueData = [
-    {
-      name: 'Page A',
-      costs: 4000,
-      profit: 2400,
-    },
-    {
-      name: 'Page B',
-      costs: 3000,
-      profit: 1398,
-    },
-    {
-      name: 'Page C',
-      costs: 2000,
-      profit: 9800,
-    },
-    {
-      name: 'Page D',
-      costs: 2780,
-      profit: 3908,
-    },
-    {
-      name: 'Page E',
-      costs: 1890,
-      profit: 4800,
-    },
-    {
-      name: 'Page F',
-      costs: 2390,
-      profit: 3800,
-    },
-    {
-      name: 'Page G',
-      costs: 3490,
-      profit: 4300,
-    },
-  ];
-
   return (
     <>
       <div className={`flex justify-between items-center`}>

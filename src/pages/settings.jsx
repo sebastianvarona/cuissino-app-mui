@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import {
-  PencilAltIcon,
-  TrashIcon,
-  ChevronDownIcon,
-} from '@heroicons/react/outline';
+import React from 'react';
 
 export default function Settings() {
   return (

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import { DatePicker } from '@material-ui/pickers';
 import { PencilAltIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
 
