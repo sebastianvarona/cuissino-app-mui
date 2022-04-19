@@ -90,7 +90,7 @@ export default function Menu() {
   return (
     <>
       <div className={`flex justify-between`}>
-        <h1 className="text-4xl font-bold mb-8">Menus</h1>
+        <h1 className="text-4xl font-bold mb-8">Menu</h1>
         <CategoryDropdown />
       </div>
       <div className={`shadow-customL dark:shadow-customD rounded-2xl`}>

@@ -4,10 +4,8 @@ import {
   MenuAlt2Icon,
   ChevronRightIcon,
   ViewGridIcon,
-  ChartPieIcon,
-  TrendingUpIcon,
+  ChartSquareBarIcon,
   MapIcon,
-  ClipboardListIcon,
   ArchiveIcon,
   UserGroupIcon,
   AdjustmentsIcon,
@@ -73,11 +71,11 @@ export default function Sidebar({
         >
           <ListItems
             link={`/`}
-            text={`Checkout`}
+            text={`Welcome`}
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
-            <ShoppingCartIcon
+            <ViewGridIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
@@ -87,7 +85,7 @@ export default function Sidebar({
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
-            <TrendingUpIcon
+            <ShoppingCartIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
@@ -97,13 +95,13 @@ export default function Sidebar({
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
-            <ChartPieIcon
+            <ChartSquareBarIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
           <ListItems
-            link={`/menus`}
-            text={`Menus`}
+            link={`/menu`}
+            text={`Menu`}
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
@@ -111,16 +109,6 @@ export default function Sidebar({
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
-          {/* <ListItems
-            link={`/products`}
-            text={`Products`}
-            toggle={toggleSidebar}
-            hover={hoverSidebar}
-          >
-            <ClipboardListIcon
-              className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
-            />
-          </ListItems> */}
           <ListItems
             link={`/inventory`}
             text={`Inventory`}
