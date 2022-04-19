@@ -21,7 +21,7 @@ const menuData = [
 ];
 let displayMenuData = menuData;
 
-export default function Menus() {
+export default function Menu() {
   let mElements = menuElementsOrganizer(displayMenuData);
   const [menuElements, setMenuElements] = useState(mElements);
 

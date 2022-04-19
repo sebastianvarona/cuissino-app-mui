@@ -111,7 +111,7 @@ export default function Sidebar({
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
-          <ListItems
+          {/* <ListItems
             link={`/products`}
             text={`Products`}
             toggle={toggleSidebar}
@@ -120,7 +120,7 @@ export default function Sidebar({
             <ClipboardListIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
-          </ListItems>
+          </ListItems> */}
           <ListItems
             link={`/inventory`}
             text={`Inventory`}
