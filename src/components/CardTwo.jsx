@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CardOne({ title, data, style, children }) {
+export default function CardTwo({ title, style, children }) {
   return (
     <div
       className={`flex-1 shadow-customL dark:shadow-customD rounded-2xl flex flex-col p-6 overflow-hidden ${style}`}
