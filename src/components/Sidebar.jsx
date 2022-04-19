@@ -5,6 +5,7 @@ import {
   ChevronRightIcon,
   ViewGridIcon,
   ChartPieIcon,
+  TrendingUpIcon,
   MapIcon,
   ClipboardListIcon,
   ArchiveIcon,
@@ -72,11 +73,11 @@ export default function Sidebar({
         >
           <ListItems
             link={`/`}
-            text={`Home`}
+            text={`Checkout`}
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
-            <ViewGridIcon
+            <ShoppingCartIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
@@ -86,7 +87,7 @@ export default function Sidebar({
             toggle={toggleSidebar}
             hover={hoverSidebar}
           >
-            <ShoppingCartIcon
+            <TrendingUpIcon
               className={`w-6 h-6 stroke-gray-500 group-hover:stroke-primary transition`}
             />
           </ListItems>
