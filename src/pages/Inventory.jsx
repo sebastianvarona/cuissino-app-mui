@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { DatePicker } from '@material-ui/pickers';
 import { PencilAltIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
+import Modal from '../components/Modal';
 
 export default function Inventory() {
+  const [showModal, setShowModal] = useState(false);
+
   // "Today"
   const [selectedStartDate, handleStartDateChange] = useState(new Date());
   // MENU DATA
@@ -142,14 +145,105 @@ export default function Inventory() {
         </table>
       </div>
       <div className="flex justify-center">
-        <CreateButton />
+        <CreateButton setShowModal={setShowModal} />
+        <Modal showModal={showModal} setShowModal={setShowModal}>
+          <h1 className={`text-4xl mb-6 font-semibold`}>New Inventory</h1>
+          <div>
+            <div className="px-4 grid grid-cols-2 grid-flow-row gap-x-6">
+              {/* Name */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="inventory-name"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="inventory-name"
+                  id="inventory-name"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Quantity */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="inventory-name"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Quantity
+                </label>
+                <input
+                  type="text"
+                  name="inventory-quantity"
+                  id="inventory-quantity"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Cost */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="inventory-name"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Cost
+                </label>
+                <input
+                  type="text"
+                  name="inventory-cost"
+                  id="inventory-cost"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Supplier */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="inventory-name"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Supplier
+                </label>
+                <input
+                  type="text"
+                  name="inventory-supplier"
+                  id="inventory-supplier"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Description */}
+              <div className="col-span-2 flex flex-col">
+                <label
+                  htmlFor="inventory-name"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Description
+                </label>
+                <textarea
+                  type="text"
+                  name="inventory-description"
+                  id="inventory-description"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-20 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              <div className="col-span-2 flex justify-center">
+                <button
+                  type="submit"
+                  className="inline-flex font-bold justify-center py-2 px-6 border border-transparent shadow-sm rounded-md text-white bg-green-400 hover:bg-green-500 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
     </>
   );
 }
-const CreateButton = () => {
+const CreateButton = (props) => {
   return (
     <button
+      onClick={() => props.setShowModal(true)}
       className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
     >
       Add to inventory

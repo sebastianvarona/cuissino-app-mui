@@ -4,7 +4,7 @@ export default function DisplayIcon({ icon }) {
   if (icon === 'trending-up') {
     return (
       <svg
-        class="w-8 h-8 stroke-[#4ca8ff]"
+        className="w-8 h-8 stroke-[#4ca8ff]"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ export default function DisplayIcon({ icon }) {
   } else if (icon === 'dollar-sign') {
     return (
       <svg
-        class="w-8 h-8 stroke-[#26b86e]"
+        className="w-8 h-8 stroke-[#26b86e]"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -37,7 +37,7 @@ export default function DisplayIcon({ icon }) {
   } else if (icon === 'trending-down') {
     return (
       <svg
-        class="w-8 h-8 stroke-[#eb5c68]"
+        className="w-8 h-8 stroke-[#eb5c68]"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ export default function DisplayIcon({ icon }) {
   } else if (icon === 'plus') {
     return (
       <svg
-        class="w-8 h-8 stroke-[#26b86e]"
+        className="w-8 h-8 stroke-[#26b86e]"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ export default function DisplayIcon({ icon }) {
   } else if (icon === 'minus') {
     return (
       <svg
-        class="w-8 h-8 stroke-[#fd683e]"
+        className="w-8 h-8 stroke-[#fd683e]"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"

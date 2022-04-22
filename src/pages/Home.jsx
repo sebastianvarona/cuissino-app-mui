@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CardTwo from '../components/CardTwo';
+import Modal from '../components/Modal';
 
 const menuData = [
   { name: 'The Sliding Mr. Bones', category: 'pasta' },

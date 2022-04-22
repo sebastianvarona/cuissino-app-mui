@@ -24,6 +24,7 @@ let displayMenuData = menuData;
 export default function Menu() {
   let mElements = menuElementsOrganizer(displayMenuData);
   const [menuElements, setMenuElements] = useState(mElements);
+  const [showModal, setShowModal] = useState(true);
 
   const CategoryDropdown = () => {
     const [openCategory, setOpenCategory] = useState(false);
@@ -84,6 +85,18 @@ export default function Menu() {
           {categoriesE}
         </div>
       </div>
+    );
+  };
+  const CreateButton = () => {
+    return (
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+        className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
+      >
+        Add menu
+      </button>
     );
   };
 
@@ -164,13 +177,4 @@ const menuElementsOrganizer = (arr) => {
     );
   });
   return m;
-};
-const CreateButton = () => {
-  return (
-    <button
-      className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
-    >
-      Add menu
-    </button>
-  );
 };

@@ -45,7 +45,7 @@ export default function Navbar() {
           {/* light/ dark mode */}
           <button
             onClick={toggleTheme}
-            class="hover:bg-gray-200 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 rounded-full p-2 inline-flex items-center dark:hover:bg-[rgba(255,255,255,0.1)] transition"
+            className="hover:bg-gray-200 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 rounded-full p-2 inline-flex items-center dark:hover:bg-[rgba(255,255,255,0.1)] transition"
             type="button"
           >
             <Theme />
@@ -55,7 +55,7 @@ export default function Navbar() {
           <button
             id="dropdownLang"
             data-dropdown-toggle="dropdown"
-            class="hover:bg-gray-200 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400  rounded-full p-2 inline-flex items-center dark:hover:bg-[rgba(255,255,255,0.1)] transition"
+            className="hover:bg-gray-200 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400  rounded-full p-2 inline-flex items-center dark:hover:bg-[rgba(255,255,255,0.1)] transition"
             type="button"
           >
             <TranslateIcon className={`w-6 h-6`} />
@@ -64,16 +64,16 @@ export default function Navbar() {
           {/* lang dropdown menu*/}
           <div
             id="dropdown"
-            class="hidden z-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-customL dark:shadow-customD overflow-hidden"
+            className="hidden z-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-customL dark:shadow-customD overflow-hidden"
           >
             <ul
-              class="text-sm text-gray-700 dark:text-gray-200"
+              className="text-sm text-gray-700 dark:text-gray-200"
               aria-labelledby="dropdownLang"
             >
               <li>
                 <a
                   href="#"
-                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base"
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base"
                 >
                   Español
                 </a>
@@ -81,7 +81,7 @@ export default function Navbar() {
               <li>
                 <a
                   href="#"
-                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base"
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-base"
                 >
                   English
                 </a>
@@ -163,9 +163,9 @@ export default function Navbar() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
             <svg
@@ -175,9 +175,9 @@ export default function Navbar() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </button>

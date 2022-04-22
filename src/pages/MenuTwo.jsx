@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { PencilAltIcon, TrashIcon, PlusIcon } from '@heroicons/react/outline';
+import {
+  PencilAltIcon,
+  TrashIcon,
+  PlusIcon,
+  ChevronDownIcon,
+} from '@heroicons/react/outline';
+import Modal from '../components/Modal';
 
 let menuData = [
   { name: 'The Sliding Mr. Bones', price: 1961, category: 'pastas' },
@@ -27,6 +33,7 @@ displayMenuData = displayMenuData.filter((m) => {
 export default function MenuTwo() {
   let mElements = menuElementsOrganizer(displayMenuData);
   const [menuElements, setMenuElements] = useState(mElements);
+  const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState(categoriesData[0]);
   const listEl = categoriesData.map((c, index) => {
     return (
@@ -57,6 +64,18 @@ export default function MenuTwo() {
     );
   });
 
+  const CreateButton = () => {
+    return (
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+        className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
+      >
+        Add menu
+      </button>
+    );
+  };
   const CategoriesElements = () => {
     return (
       <ul className="flex flex-wrap gap-2 mb-4 font-medium text-center text-gray-500 border-gray-200 dark:border-gray-700 dark:text-gray-400">
@@ -115,6 +134,53 @@ export default function MenuTwo() {
       </div>
       <div className="flex justify-center">
         <CreateButton />
+        <Modal showModal={showModal} setShowModal={setShowModal}>
+          <h1 className={`text-4xl mb-6 font-semibold`}>
+            New menu{' '}
+            <span className="capitalize text-3xl text-gray-500 dark:text-gray-400">
+              ({category})
+            </span>
+          </h1>
+          <div className="w-96">
+            <div className="px-4 flex flex-col">
+              <label htmlFor="menu-name" className="mb-1 text-lg font-semibold">
+                Name
+              </label>
+              <input
+                type="text"
+                name="menu-name"
+                id="menu-name"
+                className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+              />
+              <label
+                htmlFor="menu-price"
+                className="mb-1 text-lg font-semibold"
+              >
+                Price ($)
+              </label>
+              <input
+                name="menu-price"
+                id="menu-price"
+                type="text"
+                className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+              />
+              <input
+                type="hidden"
+                name="menu-category"
+                id="menu-category"
+                value={category}
+              />
+            </div>
+            <div className="px-4 text-right sm:px-6 flex justify-center">
+              <button
+                type="submit"
+                className="inline-flex font-bold justify-center py-2 px-6 border border-transparent shadow-sm rounded-md text-white bg-green-400 hover:bg-green-500 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </Modal>
       </div>
     </>
   );
@@ -157,13 +223,4 @@ const menuElementsOrganizer = (arr) => {
     );
   });
   return m;
-};
-const CreateButton = () => {
-  return (
-    <button
-      className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
-    >
-      Add menu
-    </button>
-  );
 };
