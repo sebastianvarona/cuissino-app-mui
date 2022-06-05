@@ -4,12 +4,12 @@ import { PencilAltIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
 import CreateButton from '../components/CreateButton';
 import Modal from '../components/Modal';
 const axios = require('axios');
-
+const api_url = 'https://gtfc4zfxca.execute-api.us-east-2.amazonaws.com';
 const getOrders = async () => {
   try {
     const response = await axios({
       method: 'get',
-      url: `${process.env.REACT_APP_API_URL}/orders`,
+      url: `${api_url}/orders`,
       data: {
         businessId: 'DJ0qEKoclZtVdJB',
         id: '',
