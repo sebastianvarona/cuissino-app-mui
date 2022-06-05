@@ -9,6 +9,7 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
     @apply dark:bg-[#151c23];
     @apply text-gray-600 dark:text-gray-300;
 }

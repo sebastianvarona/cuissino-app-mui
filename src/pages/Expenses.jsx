@@ -1,5 +1,6 @@
 import React from 'react';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
+import CreateButton from '../components/CreateButton';
 
 export default function Expenses() {
   let rIndex = 0;
@@ -201,6 +202,9 @@ export default function Expenses() {
               <tbody>{regularExpensesElements}</tbody>
             </table>
           </div>
+          <div className={`flex justify-center mt-6`}>
+            <CreateButton color="blue" text="Add monthly expense" />
+          </div>
         </div>
         {/* Irregular expenses */}
         <div>
@@ -230,6 +234,9 @@ export default function Expenses() {
               </thead>
               <tbody>{iregularExpensesElements}</tbody>
             </table>
+          </div>
+          <div className={`flex justify-center mt-6`}>
+            <CreateButton color="orange" text="Add expense" />
           </div>
         </div>
       </div>

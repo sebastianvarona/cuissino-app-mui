@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
 } from '@heroicons/react/outline';
 import Modal from '../components/Modal';
+import CreateButton from '../components/CreateButton';
 
 let menuData = [
   { name: 'The Sliding Mr. Bones', price: 1961, category: 'pastas' },
@@ -34,6 +35,7 @@ export default function MenuTwo() {
   let mElements = menuElementsOrganizer(displayMenuData);
   const [menuElements, setMenuElements] = useState(mElements);
   const [showModal, setShowModal] = useState(false);
+  const [showModalCat, setShowModalCat] = useState(false);
   const [category, setCategory] = useState(categoriesData[0]);
   const listEl = categoriesData.map((c, index) => {
     return (
@@ -63,25 +65,15 @@ export default function MenuTwo() {
       </li>
     );
   });
-
-  const CreateButton = () => {
-    return (
-      <button
-        onClick={() => {
-          setShowModal(true);
-        }}
-        className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
-      >
-        Add menu
-      </button>
-    );
-  };
   const CategoriesElements = () => {
     return (
       <ul className="flex flex-wrap gap-2 mb-4 font-medium text-center text-gray-500 border-gray-200 dark:border-gray-700 dark:text-gray-400">
         {listEl}
         <li className="relative">
           <button
+            onClick={() => {
+              setShowModalCat(true);
+            }}
             onMouseEnter={() => {
               const tooltip = document.getElementById('addCategory_tooltip');
               tooltip.classList.remove('invisible');
@@ -110,6 +102,33 @@ export default function MenuTwo() {
       <h1 className="text-4xl font-bold mb-8">Menu</h1>
       <div>
         <CategoriesElements />
+        <Modal showModal={showModalCat} setShowModal={setShowModalCat}>
+          <h1 className={`text-4xl mb-6 font-semibold`}>New category</h1>
+          <div className="w-96">
+            <div className="px-4 flex flex-col">
+              <label
+                htmlFor="category-name"
+                className="mb-1 text-lg font-semibold"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                name="category-name"
+                id="category-name"
+                className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+              />
+            </div>
+            <div className="px-4 text-right sm:px-6 flex justify-center">
+              <button
+                type="submit"
+                className="inline-flex font-bold justify-center py-2 px-6 border border-transparent shadow-sm rounded-md text-white bg-green-400 hover:bg-green-500 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </Modal>
         <div className={`shadow-customL dark:shadow-customD rounded-2xl`}>
           <table className={`table-auto border-collapse w-full`}>
             <thead>
@@ -133,7 +152,11 @@ export default function MenuTwo() {
         </div>
       </div>
       <div className="flex justify-center">
-        <CreateButton />
+        <CreateButton
+          setShowModal={setShowModal}
+          color="blue"
+          text="Add menu"
+        />
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <h1 className={`text-4xl mb-6 font-semibold`}>
             New menu{' '}

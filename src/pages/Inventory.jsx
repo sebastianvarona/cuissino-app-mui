@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DatePicker } from '@material-ui/pickers';
 import { PencilAltIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
 import Modal from '../components/Modal';
+import CreateButton from '../components/CreateButton';
 
 export default function Inventory() {
   const [showModal, setShowModal] = useState(false);
@@ -145,13 +146,17 @@ export default function Inventory() {
         </table>
       </div>
       <div className="flex justify-center">
-        <CreateButton setShowModal={setShowModal} />
+        <CreateButton
+          setShowModal={setShowModal}
+          color="green"
+          text="Add to inventory"
+        />
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <h1 className={`text-4xl mb-6 font-semibold`}>New Inventory</h1>
           <div>
-            <div className="px-4 grid grid-cols-2 grid-flow-row gap-x-6">
+            <div className="px-4 grid grid-cols-4 grid-flow-row gap-x-6">
               {/* Name */}
-              <div className="flex flex-col">
+              <div className="col-span-2 flex flex-col">
                 <label
                   htmlFor="inventory-name"
                   className="mb-1 text-lg font-semibold"
@@ -165,40 +170,25 @@ export default function Inventory() {
                   className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
                 />
               </div>
-              {/* Quantity */}
-              <div className="flex flex-col">
-                <label
-                  htmlFor="inventory-name"
-                  className="mb-1 text-lg font-semibold"
-                >
-                  Quantity
-                </label>
-                <input
-                  type="text"
-                  name="inventory-quantity"
-                  id="inventory-quantity"
-                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
-                />
-              </div>
               {/* Cost */}
-              <div className="flex flex-col">
+              <div className="col-span-2 flex flex-col">
                 <label
                   htmlFor="inventory-name"
                   className="mb-1 text-lg font-semibold"
                 >
-                  Cost
+                  Total Cost
                 </label>
                 <input
                   type="text"
-                  name="inventory-cost"
+                  name="inventory-name"
                   id="inventory-cost"
                   className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
                 />
               </div>
               {/* Supplier */}
-              <div className="flex flex-col">
+              <div className="col-span-2 flex flex-col">
                 <label
-                  htmlFor="inventory-name"
+                  htmlFor="inventory-supplier"
                   className="mb-1 text-lg font-semibold"
                 >
                   Supplier
@@ -210,10 +200,40 @@ export default function Inventory() {
                   className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
                 />
               </div>
-              {/* Description */}
-              <div className="col-span-2 flex flex-col">
+              {/* Quantity */}
+              <div className="col-span-1 w-24 flex flex-col">
                 <label
-                  htmlFor="inventory-name"
+                  htmlFor="inventory-quantity"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Quantity
+                </label>
+                <input
+                  type="text"
+                  name="inventory-quantity"
+                  id="inventory-quantity"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Units */}
+              <div className="col-span-1 w-12 flex flex-col">
+                <label
+                  htmlFor="inventory-units"
+                  className="mb-1 text-lg font-semibold"
+                >
+                  Units
+                </label>
+                <input
+                  type="text"
+                  name="inventory-units"
+                  id="inventory-units"
+                  className={`rounded border-gray-200 dark:border-gray-500 text-sm h-7 mb-6  dark:bg-gray-700`}
+                />
+              </div>
+              {/* Description */}
+              <div className="col-span-4 flex flex-col">
+                <label
+                  htmlFor="inventory-description"
                   className="mb-1 text-lg font-semibold"
                 >
                   Description
@@ -225,7 +245,7 @@ export default function Inventory() {
                   className={`rounded border-gray-200 dark:border-gray-500 text-sm h-20 mb-6  dark:bg-gray-700`}
                 />
               </div>
-              <div className="col-span-2 flex justify-center">
+              <div className="col-span-4 flex justify-center">
                 <button
                   type="submit"
                   className="inline-flex font-bold justify-center py-2 px-6 border border-transparent shadow-sm rounded-md text-white bg-green-400 hover:bg-green-500 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
@@ -240,13 +260,3 @@ export default function Inventory() {
     </>
   );
 }
-const CreateButton = (props) => {
-  return (
-    <button
-      onClick={() => props.setShowModal(true)}
-      className={`bg-green-400/25 hover:bg-green-600/25 text-green-500 transition py-2 px-4 rounded-xl font-semibold`}
-    >
-      Add to inventory
-    </button>
-  );
-};
