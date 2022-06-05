@@ -10,12 +10,13 @@ const getOrders = async () => {
     const response = await axios({
       method: 'get',
       url: `${api_url}/orders`,
+      headers: { 'Content-Type': 'application/json' },
       data: {
         businessId: 'DJ0qEKoclZtVdJB',
         id: '',
       },
     });
-    console.log(response.data);
+    console.log(response);
   } catch (error) {
     console.error(error);
   }
@@ -115,7 +116,14 @@ export default function Orders() {
     <>
       <div className={`flex justify-between items-center`}>
         <h1 className="text-4xl font-bold mb-8">
-          Orders {process.env.API_URL}
+          Orders{' '}
+          <button
+            onClick={() => {
+              getOrders();
+            }}
+          >
+            fetch
+          </button>
         </h1>
         <div className={`flex gap-4 items-center`}>
           <DatePicker
