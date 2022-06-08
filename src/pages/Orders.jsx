@@ -3,128 +3,22 @@ import { DatePicker } from '@material-ui/pickers';
 import { PencilAltIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
 import CreateButton from '../components/CreateButton';
 import Modal from '../components/Modal';
-const axios = require('axios');
-const api_url = 'https://gtfc4zfxca.execute-api.us-east-2.amazonaws.com';
-const getOrders = async () => {
-  try {
-    const response = await axios({
-      method: 'get',
-      url: `${api_url}/orders`,
-      headers: { 'Content-Type': 'application/json' },
-      data: {
-        businessId: 'DJ0qEKoclZtVdJB',
-        id: '',
-      },
-    });
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-};
+import { getOrders } from '../functions/orders';
 
 export default function Orders() {
   const [showModal, setShowModal] = useState(false);
   // "Today"
   const [selectedStartDate, handleStartDateChange] = useState(new Date());
+  const [ordersData, setOrdersData] = useState(null);
   // MENU DATA
-  let ordersData = [
-    {
-      name: 'Malcolm ',
-      quantity: 200,
-      description: null,
-      cost: 10500,
-      supplier: 'costco',
-      product: null,
-      date: `${selectedStartDate.getDate()}/${selectedStartDate.getMonth()}/${selectedStartDate.getFullYear()}`,
-    },
-    {
-      name: 'The Sliding Mr. Bones',
-      quantity: 134,
-      description: null,
-      cost: 1961,
-      supplier: 'costco',
-      product: '345',
-      date: `${selectedStartDate.getDate()}/${selectedStartDate.getMonth()}/${selectedStartDate.getFullYear()}`,
-    },
-    {
-      name: 'Shining Star',
-      quantity: 400,
-      description: null,
-      cost: 2100,
-      supplier: 'costco',
-      product: null,
-      date: `${selectedStartDate.getDate()}/${selectedStartDate.getMonth()}/${selectedStartDate.getFullYear()}`,
-    },
-  ];
-  const ordersElements = ordersData.map((e, index) => {
-    return (
-      <tr
-        key={index + 1}
-        className={`hover:bg-gray-100 dark:hover:bg-gray-700`}
-        id={index + 1}
-      >
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {index + 1}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.name}{' '}
-          <span
-            className={`ml-2 inline-block h-2 w-2 rounded-full bg-orange-500 ${
-              e.product !== null ? '' : 'hidden'
-            }`}
-          ></span>
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.quantity}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.description === null ? '-' : e.description}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          $ {e.cost}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.supplier}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.date}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4 ">
-          <div className={`flex gap-3`}>
-            <button
-              className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-blue-400/25 group`}
-            >
-              <PencilAltIcon
-                className={`w-5 h-5 group-hover:stroke-blue-500`}
-              />
-            </button>
-            <button
-              className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-red-400/25 group`}
-            >
-              <TrashIcon className={`w-5 h-5 group-hover:stroke-red-500`} />
-            </button>
-          </div>
-        </td>
-      </tr>
-    );
-  });
   useEffect(() => {
-    getOrders();
+    getOrders(setOrdersData, '');
   }, []);
 
   return (
     <>
       <div className={`flex justify-between items-center`}>
-        <h1 className="text-4xl font-bold mb-8">
-          Orders{' '}
-          <button
-            onClick={() => {
-              getOrders();
-            }}
-          >
-            fetch
-          </button>
-        </h1>
+        <h1 className="text-4xl font-bold mb-8">Orders</h1>
         <div className={`flex gap-4 items-center`}>
           <DatePicker
             disableFuture
@@ -150,19 +44,16 @@ export default function Orders() {
                 #
               </th>
               <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
-                Items
+                ID
               </th>
               <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
-                Quantity
-              </th>
-              <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
-                Description
+                # Items
               </th>
               <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
                 Total ($)
               </th>
               <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
-                Receipt
+                Status
               </th>
               <th className="border-b border-gray-300 dark:border-gray-700 py-3 text-left px-4 border-r">
                 Date
@@ -172,7 +63,97 @@ export default function Orders() {
               </th>
             </tr>
           </thead>
-          <tbody>{ordersElements}</tbody>
+          <tbody>
+            {ordersData == null ? (
+              <tr
+                className={`hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400/60`}
+              >
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  1
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  01G4S2RNJ5VRJW2ESXJFGVZZSR
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  4
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  100000
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  completed
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                  2022-06-03
+                </td>
+                <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4 ">
+                  <div className={`flex gap-3`}>
+                    <button
+                      className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-blue-400/25 group`}
+                    >
+                      <PencilAltIcon
+                        className={`w-5 h-5 group-hover:stroke-blue-500`}
+                      />
+                    </button>
+                    <button
+                      className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-red-400/25 group`}
+                    >
+                      <TrashIcon
+                        className={`w-5 h-5 group-hover:stroke-red-500`}
+                      />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              ordersData.map((e, index) => {
+                return (
+                  <tr
+                    key={e.id}
+                    className={`hover:bg-gray-100 dark:hover:bg-gray-700`}
+                    id={e.id}
+                  >
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {index + 1}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {e.id}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {e.itemsAmount}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {e.total}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {e.status}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+                      {e.date.split('T')[0].replaceAll('-', '/')}
+                    </td>
+                    <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4 ">
+                      <div className={`flex gap-3`}>
+                        <button
+                          className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-blue-400/25 group`}
+                        >
+                          <PencilAltIcon
+                            className={`w-5 h-5 group-hover:stroke-blue-500`}
+                          />
+                        </button>
+                        <button
+                          className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-red-400/25 group`}
+                        >
+                          <TrashIcon
+                            className={`w-5 h-5 group-hover:stroke-red-500`}
+                          />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
         </table>
       </div>
       <div className="flex justify-center">

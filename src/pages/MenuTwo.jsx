@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   PencilAltIcon,
   TrashIcon,
@@ -7,68 +7,39 @@ import {
 } from '@heroicons/react/outline';
 import Modal from '../components/Modal';
 import CreateButton from '../components/CreateButton';
+import { getMenus } from '../functions/menus';
 
-let menuData = [
-  { name: 'The Sliding Mr. Bones', price: 1961, category: 'pastas' },
-  { name: 'Malcolm Lockyer', price: 10500, category: 'pastas' },
-  { name: 'Shining Star', price: 2100, category: 'pastas' },
-  { name: 'Malcolm Lockyer', price: 10500, category: 'soups' },
-  { name: 'Shining Star', price: 2100, category: 'soups' },
-  { name: 'The Sliding Mr. Bones', price: 1961, category: 'soups' },
-  { name: 'Malcolm Lockyer', price: 10500, category: 'soups' },
-  { name: 'The Sliding Mr. Bones', price: 1961, category: 'soups' },
-  { name: 'Malcolm ', price: 10500, category: 'desserts' },
-  { name: 'The Sliding Mr. Bones', price: 1961, category: 'desserts' },
-  { name: 'Shining', price: 2100, category: 'desserts' },
-  { name: 'Shining Star', price: 2100, category: 'desserts' },
-];
-
-let categoriesData = ['pastas', 'soups', 'desserts'];
-let displayMenuData = menuData;
-displayMenuData = displayMenuData.filter((m) => {
-  if (m.category === categoriesData[0]) {
-    return m;
-  }
-});
-
-export default function MenuTwo() {
-  let mElements = menuElementsOrganizer(displayMenuData);
-  const [menuElements, setMenuElements] = useState(mElements);
+export default function MenuTwo({ businessId }) {
   const [showModal, setShowModal] = useState(false);
   const [showModalCat, setShowModalCat] = useState(false);
-  const [category, setCategory] = useState(categoriesData[0]);
-  const listEl = categoriesData.map((c, index) => {
-    return (
-      <li>
-        <button
-          key={index}
-          onClick={() => {
-            setCategory(c);
-            displayMenuData = menuData;
-            displayMenuData = displayMenuData.filter((m) => {
-              if (m.category === c) {
-                return m;
-              }
-            });
-            mElements = menuElementsOrganizer(displayMenuData);
-
-            setMenuElements(mElements);
-          }}
-          className={`inline-block py-1 px-2 rounded-2xl capitalize transition ${
-            category === c
-              ? 'text-blue-500 font-medium bg-blue-400/25 hover:bg-blue-600/25'
-              : 'hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300'
-          }`}
-        >
-          {c}
-        </button>
-      </li>
-    );
-  });
+  const [category, setCategory] = useState('');
+  const [menus, setMenus] = useState([]);
+  const [menusList, setMenusList] = useState([]);
+  useEffect(() => {
+    getMenus(setMenus, setMenusList, setCategory);
+  }, []);
+  console.log(menus, menusList);
   const CategoriesElements = () => {
     return (
       <ul className="flex flex-wrap gap-2 mb-4 font-medium text-center text-gray-500 border-gray-200 dark:border-gray-700 dark:text-gray-400">
-        {listEl}
+        {menus.map((e, index) => {
+          return (
+            <li key={e.id}>
+              <button
+                onClick={() => {
+                  setCategory(e);
+                }}
+                className={`inline-block py-1 px-2 rounded-2xl capitalize transition ${
+                  category === e
+                    ? 'text-blue-500 font-medium bg-blue-400/25 hover:bg-blue-600/25'
+                    : 'hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300'
+                }`}
+              >
+                {e}
+              </button>
+            </li>
+          );
+        })}
         <li className="relative">
           <button
             onClick={() => {
@@ -147,7 +118,7 @@ export default function MenuTwo() {
                 </th>
               </tr>
             </thead>
-            <tbody>{menuElements}</tbody>
+            <tbody>{menuElementsOrganizer(category, menusList)}</tbody>
           </table>
         </div>
       </div>
@@ -209,41 +180,47 @@ export default function MenuTwo() {
   );
 }
 
-const menuElementsOrganizer = (arr) => {
-  let m = arr.map((e, index) => {
-    return (
-      <tr
-        key={index + 1}
-        className={`hover:bg-gray-100 dark:hover:bg-gray-700`}
-        id={index + 1}
-      >
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {index + 1}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          {e.name}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
-          $ {e.price}
-        </td>
-        <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4  ">
-          <div className={`flex gap-3`}>
-            <button
-              className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-blue-400/25 group`}
-            >
-              <PencilAltIcon
-                className={`w-5 h-5 group-hover:stroke-blue-500`}
-              />
-            </button>
-            <button
-              className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-red-400/25 group`}
-            >
-              <TrashIcon className={`w-5 h-5 group-hover:stroke-red-500`} />
-            </button>
-          </div>
-        </td>
-      </tr>
-    );
+const menuElementsOrganizer = (category, arr) => {
+  let index = 0;
+  let m = arr.map((e) => {
+    if (e.category == category) {
+      index += 1;
+      return (
+        <tr
+          key={index}
+          className={`hover:bg-gray-100 dark:hover:bg-gray-700`}
+          id={index}
+        >
+          <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+            {index}
+          </td>
+          <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+            {e.name}
+          </td>
+          <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4">
+            $ {e.price}
+          </td>
+          <td className="border-t border-gray-100 dark:border-gray-800 py-2 px-4  ">
+            <div className={`flex gap-3`}>
+              <button
+                className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-blue-400/25 group`}
+              >
+                <PencilAltIcon
+                  className={`w-5 h-5 group-hover:stroke-blue-500`}
+                />
+              </button>
+              <button
+                className={`h-7 w-7 flex justify-center items-center rounded-lg hover:bg-red-400/25 group`}
+              >
+                <TrashIcon className={`w-5 h-5 group-hover:stroke-red-500`} />
+              </button>
+            </div>
+          </td>
+        </tr>
+      );
+    } else {
+      if (index !== 0) index -= 1;
+    }
   });
   return m;
 };
